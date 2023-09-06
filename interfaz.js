@@ -5,7 +5,8 @@ const readlineSync = require('readline-sync');
 console.log('Bienvenido a su lista de Tareas');
 console.log('Que haremos hoy?');
 
-function mostrarMenu() {
+async function mostrarMenu() {
+  while (true) {
   console.log('\nMenú:');
   console.log('1. Agregar nueva tarea');
   console.log('2. Eliminar una tarea');
@@ -17,19 +18,19 @@ function mostrarMenu() {
 
   switch (opcion) {
     case '1':
-      funciones.agregarTarea();
+      await funciones.agregarTarea();
       mostrarMenu();
       break;
     case '2':
-      funciones.eliminarTarea();
+      await funciones.eliminarTarea();
       mostrarMenu();
       break;
     case '3':
-      funciones.marcarTareaComoCompletada();
+      await funciones.marcarTareaComoCompletada();
       mostrarMenu();
       break;
     case '4':
-      funciones.mostrarTareas();
+      await funciones.mostrarTareas();
       mostrarMenu();
       break;
     case '5':
@@ -40,6 +41,7 @@ function mostrarMenu() {
       console.log('Opción no válida.');
       mostrarMenu();
   }
+}
 }
 
 mostrarMenu();
